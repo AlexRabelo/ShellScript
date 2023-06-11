@@ -11,3 +11,4 @@ HISTCONTROL=ignoredups
 HISTIGNORE="pwd:ls:ll:ls -ltr:"
 export readonly HISTTIMEFORMAT="%d-%b-%Y %T -> "
 export readonly HISTSIZE HISTFILESIZE HISTCONTROL HISTIGNORE
+
