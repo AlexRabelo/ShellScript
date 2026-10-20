@@ -1,0 +1,4 @@
+# Endpoints HTTP para healthcheck
+http://localhost:80/health
+http://localhost:9090/metrics
+https://httpbin.org/status/200

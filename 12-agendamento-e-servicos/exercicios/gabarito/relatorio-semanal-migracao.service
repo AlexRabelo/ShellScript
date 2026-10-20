@@ -1,0 +1,33 @@
+[Unit]
+Description=Relatório de saúde semanal migrado (segundas 06:00)
+Documentation=man:relatorio-saude.sh(1)
+After=network-online.target
+ConditionPathExists=/usr/local/sbin/relatorio-saude.sh
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/relatorio-saude.sh -j
+User=root
+Group=root
+# Segurança (root necessário para algumas métricas)
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH CAP_SYS_RESOURCE
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+# Logs
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=relatorio-semanal-migracao
+TimeoutStartSec=300
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

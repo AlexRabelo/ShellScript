@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "shell-server": {
+      "command": "/home/arabelo/.local/share/uv/tools/mcp-shell-server/bin/mcp-shell-server",
+      "args": []
+    }
+  }
+}

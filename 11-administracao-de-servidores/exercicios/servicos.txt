@@ -1,0 +1,5 @@
+# Serviços systemd para healthcheck
+nginx
+postgresql
+docker
+sshd

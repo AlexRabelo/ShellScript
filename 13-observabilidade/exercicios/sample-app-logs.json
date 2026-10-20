@@ -1,0 +1,8 @@
+{"timestamp": "2026-10-13T10:30:00.123Z", "level": "info", "service": "api-gateway", "trace_id": "abc123", "span_id": "span1", "message": "Request received", "duration_ms": 45}
+{"timestamp": "2026-10-13T10:30:01.456Z", "level": "warn", "service": "api-gateway", "trace_id": "abc123", "span_id": "span2", "message": "Slow database query", "duration_ms": 1200}
+{"timestamp": "2026-10-13T10:30:02.789Z", "level": "error", "service": "payment-service", "trace_id": "def456", "span_id": "span3", "message": "Payment gateway timeout", "duration_ms": 5000}
+{"timestamp": "2026-10-13T10:30:03.012Z", "level": "info", "service": "auth-service", "trace_id": "ghi789", "span_id": "span4", "message": "User login successful", "duration_ms": 120}
+{"timestamp": "2026-10-13T10:30:04.345Z", "level": "fatal", "service": "notification-service", "trace_id": "jkl012", "span_id": "span5", "message": "RabbitMQ connection lost", "duration_ms": 0}
+{"timestamp": "2026-10-13T10:30:05.678Z", "level": "info", "service": "api-gateway", "trace_id": "mno345", "span_id": "span6", "message": "Request completed", "duration_ms": 67}
+{"timestamp": "2026-10-13T10:30:06.901Z", "level": "error", "service": "payment-service", "trace_id": "def456", "span_id": "span7", "message": "Retry failed", "duration_ms": 3000}
+{"timestamp": "2026-10-13T10:30:07.234Z", "level": "info", "service": "auth-service", "trace_id": "pqr678", "span_id": "span8", "message": "Token refreshed", "duration_ms": 89}

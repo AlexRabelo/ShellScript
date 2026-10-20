@@ -1,0 +1,189 @@
+name: CI - Shell Script Course
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # Job 1: ShellCheck - Linting all shell scripts
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck on all .sh files
+        run: |
+          find . -name "*.sh" -type f ! -path "./.git/*" ! -path "./node_modules/*" | \
+          xargs shellcheck --enable=all --exclude=SC2034,SC2155
+
+  # Job 2: Bash Syntax Check - Validate all scripts parse correctly
+  bash-syntax:
+    name: Bash Syntax Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check bash syntax
+        run: |
+          find . -name "*.sh" -type f ! -path "./.git/*" ! -path "./node_modules/*" | \
+          xargs bash -n
+        shell: bash
+
+  # Job 3: BATS Tests - Run unit/integration tests
+  bats-tests:
+    name: BATS Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install BATS and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bats jq curl
+
+      - name: Run BATS tests in all test/ directories
+        run: |
+          find . -type d \( -name "test" -o -name "testes" \) | while read -r testdir; do
+            if [ -n "$(find "$testdir" -name "*.bats" -type f 2>/dev/null | head -1)" ]; then
+              echo "Running tests in $testdir"
+              bats "$testdir"/*.bats
+            fi
+          done
+
+  # Job 4: Structure Validation - Verify module structure
+  structure-validation:
+    name: Structure Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate module structure
+        run: |
+          # Verifica módulos 00-15
+          for i in {00..15}; do
+            module_dir=$(find . -maxdepth 1 -type d -name "${i}-*" | head -1)
+            if [ -z "$module_dir" ]; then
+              echo "::error::Módulo $i não encontrado"
+              exit 1
+            fi
+
+            echo "Validando $module_dir..."
+
+            # README obrigatório
+            if [ ! -f "$module_dir/README.md" ]; then
+              echo "::error::$module_dir: README.md ausente"
+              exit 1
+            fi
+
+            # exemplos/ obrigatório
+            if [ ! -d "$module_dir/exemplos" ]; then
+              echo "::error::$module_dir: diretório exemplos/ ausente"
+              exit 1
+            fi
+
+            # exercicios/ obrigatório
+            if [ ! -d "$module_dir/exercicios" ]; then
+              echo "::error::$module_dir: diretório exercicios/ ausente"
+              exit 1
+            fi
+
+            # gabarito/ em exercicios
+            if [ ! -d "$module_dir/exercicios/gabarito" ]; then
+              echo "::error::$module_dir/exercicios: gabarito/ ausente"
+              exit 1
+            fi
+
+            # Pelo menos 1 exemplo .sh
+            if [ -z "$(find "$module_dir/exemplos" -name "*.sh" -type f | head -1)" ]; then
+              echo "::error::$module_dir/exemplos: nenhum arquivo .sh encontrado"
+              exit 1
+            fi
+
+            echo "✓ $module_dir OK"
+          done
+
+          echo "Todos os 16 módulos validados com sucesso!"
+
+  # Job 5: Templates Validation - Verify templates exist
+  templates-validation:
+    name: Templates Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate templates
+        run: |
+          required_templates=(
+            "templates/header-padrao.sh"
+            "templates/header-simples.sh"
+            "templates/header-profissional.sh"
+            "templates/script-producao.sh"
+            "templates/alias.sh"
+          )
+
+          for tpl in "${required_templates[@]}"; do
+            if [ ! -f "$tpl" ]; then
+              echo "::error::Template ausente: $tpl"
+              exit 1
+            fi
+            echo "✓ $tpl OK"
+          done
+
+  # Job 6: Reference Materials - Verify reference docs
+  reference-validation:
+    name: Reference Materials Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate reference materials
+        run: |
+          required_refs=(
+            "referencia/README.md"
+            "referencia/cheat-sheet.md"
+            "referencia/armadilhas.md"
+            "referencia/links-importantes.md"
+            "referencia/quando-nao-usar-shell.md"
+          )
+
+          for ref in "${required_refs[@]}"; do
+            if [ ! -f "$ref" ]; then
+              echo "::error::Referência ausente: $ref"
+              exit 1
+            fi
+            echo "✓ $ref OK"
+          done
+
+  # Job 7: Final Verification - Comprehensive check
+  final-verification:
+    name: Final Verification
+    runs-on: ubuntu-latest
+    needs: [shellcheck, bash-syntax, bats-tests, structure-validation, templates-validation, reference-validation]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Final summary
+        run: |
+          echo "✅ Todos os checks passaram!"
+          echo "📊 Estatísticas do repositório:"
+          echo "  - Módulos: 16 (00-15)"
+          echo "  - Scripts .sh: $(find . -name "*.sh" -type f ! -path "./.git/*" | wc -l)"
+          echo "  - Testes BATS: $(find . -name "*.bats" -type f | wc -l)"
+          echo "  - Templates: $(find templates/ -name "*.sh" -type f | wc -l)"
+          echo "  - Referências: $(find referencia/ -name "*.md" -type f | wc -l)"

@@ -1,0 +1,3 @@
+# Configuração global do ShellCheck
+# Exemplo de exclusão futura (fontes externas não resolvidas):
+# disable=SC1091

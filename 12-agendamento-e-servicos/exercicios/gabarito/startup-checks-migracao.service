@@ -1,0 +1,33 @@
+[Unit]
+Description=Script de startup migrado do @reboot
+Documentation=man:startup-script.sh(1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/startup-checks.sh
+User=root
+Group=root
+# Segurança
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+# Logs
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=startup-checks-migracao
+TimeoutStartSec=300
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target

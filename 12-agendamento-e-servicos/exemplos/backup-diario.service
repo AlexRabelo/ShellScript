@@ -1,0 +1,36 @@
+[Unit]
+Description=Backup diário rotativo do servidor
+Documentation=man:backup-rotativo.sh(1)
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=/usr/local/sbin/backup-rotativo.sh
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/backup-rotativo.sh -r 7 /dados /backup
+User=backup
+Group=backup
+# Segurança
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/backup /var/log/backup-rotativo.log
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+# Logs
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=backup-diario
+# Timeout
+TimeoutStartSec=3600
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target

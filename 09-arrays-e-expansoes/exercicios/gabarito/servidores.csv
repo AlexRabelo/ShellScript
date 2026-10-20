@@ -1,0 +1,10 @@
+hostname,funcao,status,localidade,memoria_gb
+web01,frontend,ativo,sp,8
+web02,frontend,ativo,sp,8
+web03,frontend,manutencao,sp,8
+db01,banco,ativo,rj,32
+db02,banco,ativo,rj,16
+db03,banco,manutencao,rj,24
+bkp01,backup,ativo,sp,4
+lb01,loadbalancer,ativo,sp,4
+lb02,loadbalancer,ativo,rj,4
