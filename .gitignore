@@ -1,0 +1,21 @@
+# Segurança — NUNCA versionar
+.env
+*.pem
+*.key
+credentials
+*.csv.bak
+
+# Logs e saídas de execução
+*.log
+*.out
+
+# Backups e temporários de editor (vim incluído)
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

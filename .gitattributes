@@ -1,0 +1,6 @@
+# Força eol=lf para todos os scripts e arquivos do repositório
+* text=auto eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf

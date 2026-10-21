@@ -1,0 +1,99 @@
+name: Automated Release
+
+on:
+  push:
+    branches: [main]
+    types: [closed]  # PR merged
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Create Release
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.base.ref, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Extract version from branch
+        id: version
+        run: |
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+          # release/v0.3-modulo-05 → 0.3.0
+          # release/v0.3-modulo-04-05 → 0.3.0
+          MINOR=$(echo "$BRANCH" | sed -E 's/.*v0\.([0-9]+)-modulo.*/\1/')
+          echo "version=0.${MINOR}.0" >> $GITHUB_OUTPUT
+      - name: Generate changelog from conventional commits
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          DATE=$(date +%Y-%m-%d)
+
+          echo "## [$VERSION] — $DATE" > CHANGELOG_TEMP.md
+          echo "" >> CHANGELOG_TEMP.md
+
+          # Busca commits do merge (squash commits têm mensagem do PR)
+          git log --oneline --no-merges --grep="^(feat|fix|docs|style|refactor|test|chore|ci)\(" origin/main..HEAD | while read commit; do
+            hash=$(echo "$commit" | cut -d' ' -f1)
+            msg=$(echo "$commit" | cut -d' ' -f2-)
+
+            # Extrai type do conventional commit
+            if [[ "$msg" =~ ^(feat|fix|docs|style|refactor|test|chore|ci)\( ]]; then
+              TYPE=$(echo "$msg" | sed -E 's/^(feat|fix|docs|style|refactor|test|chore|ci)\(.*/\1/')
+            else
+              TYPE="chore"
+            fi
+
+            case "$TYPE" in
+              feat)     SECTION="### ✨ Adicionado" ;;
+              fix)      SECTION="### 🐛 Corrigido" ;;
+              docs)     SECTION="### 📄 Documentação" ;;
+              style)    SECTION="### 💎 Estilo" ;;
+              refactor) SECTION="### 🔧 Refatoração" ;;
+              test)     SECTION="### ✅ Testes" ;;
+              chore)    SECTION="### 🔧 Manutenção" ;;
+              ci)       SECTION="### 🔧 CI/CD" ;;
+              *)        SECTION="### 🔧 Outros" ;;
+            esac
+
+            # Adiciona seção se não existe
+            if ! grep -q "$SECTION" CHANGELOG_TEMP.md; then
+              echo "$SECTION" >> CHANGELOG_TEMP.md
+              echo "" >> CHANGELOG_TEMP.md
+            fi
+
+            # Adiciona item na seção correta
+            sed -i "/^$SECTION$/a - $msg" CHANGELOG_TEMP.md
+          done
+
+          # Se não houve conventional commits, usa mensagens brutas
+          if ! grep -q "###" CHANGELOG_TEMP.md; then
+            echo "### 🔧 Alterações" >> CHANGELOG_TEMP.md
+            echo "" >> CHANGELOG_TEMP.md
+            git log --oneline --no-merges origin/main..HEAD | while read commit; do
+              msg=$(echo "$commit" | cut -d' ' -f2-)
+              sed -i "/^### 🔧 Alterações$/a - $msg" CHANGELOG_TEMP.md
+            done
+          fi
+
+          # Remove linhas duplicadas mantendo ordem
+          awk '!seen[$0]++' CHANGELOG_TEMP.md > CHANGELOG_NEW.md
+
+          # Prepend ao CHANGELOG.md existente (mantém histórico)
+          cat CHANGELOG.md >> CHANGELOG_NEW.md
+          mv CHANGELOG_NEW.md CHANGELOG.md
+          rm -f CHANGELOG_TEMP.md
+
+          echo "✅ CHANGELOG.md atualizado para v$VERSION"
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          release_name: Release v${{ steps.version.outputs.version }}
+          generate_release_notes: false
+          body_path: CHANGELOG.md
+          draft: false
+          prerelease: false
