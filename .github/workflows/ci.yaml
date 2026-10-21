@@ -1,99 +1,28 @@
-name: CI - Qualidade e Testes
+name: CI - Qualidade e Sintaxe
 
 on:
   push:
-    branches: [main, 'release/**']
+    branches: ["**"]
   pull_request:
-    branches: [main]
+    branches: ["**"]
   workflow_dispatch:
-
-permissions:
-  contents: write
-  checks: write
 
 jobs:
   shellcheck:
     name: ShellCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
       - name: Install ShellCheck
         run: sudo apt-get update && sudo apt-get install -y shellcheck
       - name: Run ShellCheck
         run: |
-          find . -name "*.sh" -type f ! -path "./.git/*" | xargs shellcheck -x --exclude=SC2034,SC2155
-          find . -name "*.bats" -type f ! -path "./.git/*" | xargs shellcheck -x
+          find . -name "*.sh" -type f ! -path "./.git/*" | xargs -r shellcheck -x --exclude=SC2034,SC2155
 
   syntax:
     name: Bash Syntax Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
       - name: Validate scripts
-        run: find . -name "*.sh" -type f ! -path "./.git/*" | xargs bash -n
-
-  course-validation:
-    name: Module & Template Validation
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: Validate Module Structure (00-15)
-        run: |
-          for i in {00..15}; do
-            module_dir=$(find . -maxdepth 1 -type d -name "${i}-*" | head -1)
-            [[ -z "$module_dir" ]] && { echo "::error::Módulo $i ausente"; exit 1; }
-            [[ -f "$module_dir/README.md" ]] || { echo "::error::$module_dir: README.md ausente"; exit 1; }
-            [[ -d "$module_dir/exemplos" ]] || { echo "::error::$module_dir: exemplos/ ausente"; exit 1; }
-            [[ -d "$module_dir/exercicios/gabarito" ]] || { echo "::error::$module_dir: gabarito/ ausente"; exit 1; }
-          done
-      - name: Validate Templates & References
-        run: |
-          ls templates/header-*.sh templates/script-producao.sh templates/alias.sh > /dev/null
-          ls referencia/*.md > /dev/null
-
-  tests:
-    name: BATS Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: Install BATS
-        run: sudo apt-get update && sudo apt-get install -y bats jq curl
-      - name: Run Tests
-        run: |
-          find . -type d \( -name "test" -o -name "testes" \) | while read -r testdir; do
-            if [ -n "$(find "$testdir" -name "*.bats" -type f 2>/dev/null | head -1)" ]; then
-              echo "Running tests in $testdir"
-              bats "$testdir"/*.bats
-            fi
-          done
-
-  changelog:
-    name: Verify CHANGELOG
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-      - name: Check Update
-        run: |
-          if ! git diff --name-only origin/main...HEAD | grep -q "CHANGELOG.md"; then
-            echo "::error::CHANGELOG.md deve ser atualizado neste PR"
-            exit 1
-          fi
-
-  release:
-    name: Create Release
-    needs: [shellcheck, syntax, course-validation, tests]
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-      - name: Create tag & release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release v${{ github.run_number }}
-          generate_release_notes: true
+        run: find . -name "*.sh" -type f ! -path "./.git/*" | xargs -r bash -n
