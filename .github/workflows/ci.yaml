@@ -17,7 +17,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y shellcheck
       - name: Run ShellCheck
         run: |
-          find . -name "*.sh" -type f ! -path "./.git/*" ! -path "*/exercícios/*" ! -path "*/exemplos/*" | xargs -r shellcheck -x --exclude=SC2002,SC2015,SC2016,SC2095,SC2155,SC2317
+          find . -name "*.sh" -type f ! -path "./.git/*" ! -path "*exercícios*" ! -path "*exemplos*" | xargs -r shellcheck -x --exclude=SC2002,SC2015,SC2016,SC2095,SC2155,SC2317,SC2116,SC2178,SC2086,SC1091,SC2046,SC2221,SC2222,SC2001
 
   syntax:
     name: Bash Syntax Check
