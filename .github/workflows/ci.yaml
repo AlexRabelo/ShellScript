@@ -12,7 +12,7 @@ jobs:
     name: ShellCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install ShellCheck
         run: sudo apt-get update && sudo apt-get install -y shellcheck
       - name: Run ShellCheck
@@ -23,6 +23,6 @@ jobs:
     name: Bash Syntax Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Validate scripts
         run: find . -name "*.sh" -type f ! -path "./.git/*" | xargs -r bash -n
