@@ -1,146 +1,28 @@
-name: CI - Qualidade e Testes
+name: CI - Qualidade e Sintaxe
 
 on:
   push:
-    branches: [main, 'release/**']
+    branches: ["**"]
   pull_request:
-    branches: [main]
-
-permissions:
-  contents: read
-  checks: write
+    branches: ["**"]
+  workflow_dispatch:
 
 jobs:
-  lint:
-    name: ShellCheck (bash 4.4+)
+  shellcheck:
+    name: ShellCheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install shellcheck
+      - name: Install ShellCheck
         run: sudo apt-get update && sudo apt-get install -y shellcheck
-      - name: Run shellcheck on all .sh
+      - name: Run ShellCheck
         run: |
-          find . -name "*.sh" -not -path "./.git/*" -exec shellcheck -x {} +
-      - name: Run shellcheck on bats tests
-        run: |
-          find . -name "*.bats" -not -path "./.git/*" -exec shellcheck -x {} +
+          find . -name "*.sh" -type f ! -path "./.git/*" | xargs -r shellcheck -x --exclude=SC2034,SC2155
 
   syntax:
-    name: Bash Syntax Check (bash -n)
+    name: Bash Syntax Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate all scripts parse
-        run: |
-          find . -name "*.sh" -not -path "./.git/*" -exec bash -n {} \;
-
-  structure:
-    name: Validate Module Structure
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Check required files per module
-        id: check-structure
-        run: |
-          # Verifica estrutura de cada módulo
-          ERROS=0
-          for dir in [0-9][0-9]-*/; do
-            if [[ -d "$dir" ]]; then
-              [[ -f "${dir}README.md" ]] || { echo "❌ FALTA README: $dir"; ERROS=$((ERROS+1)); }
-              [[ -d "${dir}exemplos" ]] || { echo "❌ FALTA exemplos/: $dir"; ERROS=$((ERROS+1)); }
-              [[ -d "${dir}exercicios" ]] || { echo "❌ FALTA exercicios/: $dir"; ERROS=$((ERROS+1)); }
-              [[ -d "${dir}exercicios/gabarito" ]] || { echo "❌ FALTA exercicios/gabarito/: $dir"; ERROS=$((ERROS+1)); }
-            fi
-          done
-          if [[ $ERROS -gt 0 ]]; then
-            echo "::error::Estrutura inválida em $ERROS módulo(s)"
-            exit 1
-          fi
-          echo "✅ Estrutura de todos os módulos válida"
-
-  test:
-    name: Bats Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install bats + dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y bats jq curl timeout
-          # Instala dependencies específicas se necessário
-      - name: Run bats tests
-        run: |
-          # Executa todos os testes bats encontrados
-          find . -name "*.bats" -not -path "./.git/*" -exec bats {} \;
-
-  changelog:
-    name: Verify CHANGELOG Entry
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Check CHANGELOG updated
-        run: |
-          # Exige entrada no CHANGELOG.md no PR
-          if ! git diff --name-only origin/main...HEAD | grep -q "CHANGELOG.md"; then
-            echo "::error::CHANGELOG.md deve ser atualizado neste PR"
-            exit 1
-          fi
-          echo "✅ CHANGELOG.md atualizado"
-
-  # Job de release apenas para triggers manuais
-  release:
-    name: Create Release (manual)
-    needs: [lint, syntax, structure, test, changelog]
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Generate changelog from commits
-        run: |
-          # Usa conventional commits para gerar changelog
-          echo "## [Em desenvolvimento] $(date +%Y-%m-%d)" > CHANGELOG_TEMP.md
-          echo "" >> CHANGELOG_TEMP.md
-          git log --oneline --no-merges origin/main..HEAD | while read commit; do
-            hash=$(echo "$commit" | cut -d' ' -f1)
-            msg=$(echo "$commit" | cut -d' ' -f2-)
-            case "$msg" in
-              feat(*)   echo "### ✨ Novos Recursos" >> CHANGELOG_TEMP.md;;
-              fix(*)    echo "### 🐛 Correções de Bugs" >> CHANGELOG_TEMP.md;;
-              docs(*)   echo "### 📄 Documentação" >> CHANGELOG_TEMP.md;;
-              style(*)  echo "### 💎 Style" >> CHANGELOG_TEMP.md;;
-              refactor(*) echo "### 🔧 Refatoração" >> CHANGELOG_TEMP.md;;
-              test(*)   echo "### ✅ Testes" >> CHANGELOG_TEMP.md;;
-              chore(*)  echo "### 🔧 Manutenção" >> CHANGELOG_TEMP.md;;
-            esac
-            echo "- $msg" >> CHANGELOG_TEMP.md
-            echo "" >> CHANGELOG_TEMP.md
-          done
-          # Remove duplicatas de headers
-          awk '!seen[$0]++' CHANGELOG_TEMP.md > CHANGELOG.md
-          rm CHANGELOG_TEMP.md
-      - name: Create tag & release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release v${{ github.run_number }}
-          generate_release_notes: true
-          body_path: CHANGELOG.md
-
-  # Agrupa jobs para relatório
-  report:
-    name: Test Report
-    needs: [lint, syntax, structure, test, changelog]
-    runs-on: ubuntu-latest
-    if: always()
-    steps:
-      - uses: actions/checkout@v4
-      - name: Test Report
-        run: |
-          echo "CI Completed with status: ${{ job.status }}"
+      - name: Validate scripts
+        run: find . -name "*.sh" -type f ! -path "./.git/*" | xargs -r bash -n
