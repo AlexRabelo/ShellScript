@@ -22,7 +22,8 @@ check_file() {
     local has_warnings=0
 
     # 1. Não usar `ls` em loops (usar glob ou find)
-    if grep -q 'for .* in \$(ls' "$file" 2>/dev/null; then
+    local ls_pattern="for .* in \$(ls"
+    if grep -q "$ls_pattern" "$file" 2>/dev/null; then
         echo -e "${RED}❌ $file: uso de 'for x in \$(ls ...)' — use glob 'for x in *' ou find${NC}"
         has_errors=1
     fi
@@ -75,7 +76,8 @@ check_file() {
     fi
 
     # 8. getopts vs parsing manual
-    if grep -q 'case \$1 in' "$file" && ! grep -q 'getopts' "$file"; then
+    local case_pattern="case \$1 in"
+    if grep -q "$case_pattern" "$file" && ! grep -q 'getopts' "$file"; then
         echo -e "${YELLOW}⚠️  $file: parsing manual de flags — use 'getopts'${NC}"
         has_warnings=1
     fi
