@@ -43,7 +43,7 @@ install_pip_packages() {
         commitizen
     # Adiciona ~/.local/bin ao PATH se necessário
     if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
-        echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+        echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
         export PATH="$HOME/.local/bin:$PATH"
     fi
 }
