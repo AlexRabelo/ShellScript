@@ -123,6 +123,34 @@ chown ana:devs arquivo     # muda dono e grupo (requer root)
 
 > **Analogia:** permissões são chaves de um prédio. O dono tem a chave mestra, o grupo tem a chave da sala comum, e os outros só entram no saguão.
 
+### Permissões especiais (SUID, SGID, sticky bit)
+
+Além de `r`, `w` e `x`, existem três permissões especiais que mudam o comportamento do arquivo ou diretório:
+
+| Símbolo | Nome | O que faz (em resumo) | Exemplo típico |
+|---------|------|----------------------|----------------|
+| `s` no dono | **SUID** | O programa roda com as permissões do **dono**, não de quem executa | `/usr/bin/passwd` |
+| `s` no grupo | **SGID** | O programa roda com as permissões do **grupo**; arquivos novos em diretório herdam o grupo | `/usr/bin/locate` |
+| `t` em outros | **Sticky bit** | Só o dono do arquivo (ou root) pode apagar ou renomear arquivos dentro do diretório | `/tmp` |
+
+No `ls -l`, aparecem no lugar do `x`:
+
+```
+-rwsr-xr--  1  root  root  40000  out 12 10:00  passwd
+drwxrwxrwt  1  root  root     40  out 12 10:00  tmp
+```
+
+```bash
+chmod u+s programa    # ativa SUID
+chmod g+s pasta       # ativa SGID
+chmod +t pasta        # ativa sticky bit
+chmod 4755 programa   # SUID + rwxr-xr-x
+chmod 2770 pasta      # SGID + rwxrwx---
+chmod 1777 pasta      # sticky bit + rwxrwxrwx
+```
+
+> **Cuidado:** SUID e SGID dão privilégios extras ao programa. Usados errado, abrem brechas de segurança. Só ative se souber exatamente por que está fazendo. O sticky bit em `/tmp` é seguro e desejável: evita que um usuário apague o arquivo temporário de outro.
+
 ### Executar como administrador
 
 ```bash

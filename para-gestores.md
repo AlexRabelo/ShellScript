@@ -8,7 +8,7 @@ Tarefas repetitivas feitas à mão consomem horas de profissionais cuja hora é 
 
 Shell script é uma ferramenta que já vem instalada em praticamente todo servidor Linux. Não precisa comprar licença, não precisa instalar nada novo, não depende de conexão com a nuvem para funcionar. Um script bem escrito faz em segundos o que uma pessoa faria em horas — e faz da mesma forma toda vez, não esquece etapas, não se distrai.
 
-## Exemplo prático (sem jargão)
+## Exemplo prático
 
 Em vez de um administrador entrar manualmente em dez servidores toda segunda-feira para checar se o disco está cheio, um script faz isso sozinho, manda um alerta só se houver problema, e registra tudo em um arquivo de log. O tempo gasto passa de horas para segundos.
 
