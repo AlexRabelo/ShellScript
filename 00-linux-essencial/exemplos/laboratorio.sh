@@ -14,9 +14,18 @@
 # Leia os comentários e observe o resultado de cada comando.
 #
 
-# Diretório de laboratório. Os exemplos não alteram arquivos do projeto.
-mkdir -p /tmp/lab-linux/logs /tmp/lab-linux/backup
-cd /tmp/lab-linux || exit 1
+# Diretório de laboratório temporário. Usamos mktemp para evitar colisões
+# entre usuários e para limpeza automática. Em produção, nunca use caminhos
+# fixos em /tmp.
+LAB_DIR="$(mktemp -d -t lab-linux.XXXXXX)"
+mkdir -p "$LAB_DIR/logs" "$LAB_DIR/backup"
+cd "$LAB_DIR" || exit 1
+
+# Limpeza automática ao sair (mesmo em caso de erro)
+cleanup() {
+    rm -rf -- "$LAB_DIR"
+}
+trap cleanup EXIT
 
 echo "=== 1. Navegação ==="
 pwd

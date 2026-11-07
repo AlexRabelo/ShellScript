@@ -19,3 +19,6 @@ credentials
 # Sistema operacional
 .DS_Store
 Thumbs.db
+
+# Configuração local do OpenCode (caminhos da máquina)
+.mcp.json
