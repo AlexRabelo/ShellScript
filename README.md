@@ -1,6 +1,6 @@
 # Curso de Shell Script (Bash) — Do Zero à Automação Real
 
-Um curso prático e progressivo pra quem quer aprender shell script do jeito certo: escrevendo código que aguenta produção. Começa no básico (navegar, arquivos, permissões) e vai até automação de servidores, observabilidade e AWS.
+Um curso prático e progressivo pra quem quer aprender shell script escrevendo código que aguenta produção. Começa no básico (navegar, arquivos, permissões) e vai até automação de servidores, observabilidade e AWS.
 
 > **A analogia:** é como aprender a cozinhar. Primeiro você domina a faca e o fogão (comandos), depois segue receitas (scripts), e no final monta uma cozinha industrial que funciona sozinha às 3h da manhã (automação em produção).
 

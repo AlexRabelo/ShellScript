@@ -1,12 +1,12 @@
 # Links Importantes para Shell Script e Automação de Infraestrutura
 
-Este documento reúne recursos essenciais para quem deseja aprofundar seus conhecimentos em shell script, automação de infraestrutura, SRE e práticas de engenharia de confiabilidade.
+Reúne recursos para aprofundar em shell script, automação de infraestrutura, SRE e práticas de engenharia de confiabilidade.
 
-## 📚 **Livros Fundamentais**
+## Livros Fundamentais
 
 ### Shell Script e Bash
 - [Classic Shell Scripting](https://www.oreilly.com/library/view/classic-shell-scripting/0596005954/) - Arnold Robbins & Nelson H.F. Beebe  
-  *A bíblia do POSIX shell e Bash, essencial para entender portabilidade e limites.*
+  *Referência essencial para entender portabilidade e limites.*
   
 - [Linux Command Line and Shell Scripting Bible](https://www.wiley.com/en-us/Linux+Command+Line+and+Shell+Scripting+Bible%2C+4th+Edition-p-9781119838330) - Richard Blum & Christine Bresnahan  
   *Guia prático com foco em administração de sistemas Linux.*
@@ -19,13 +19,13 @@ Este documento reúne recursos essenciais para quem deseja aprofundar seus conhe
 
 ### SRE, DevOps e Infraestrutura
 - [Site Reliability Engineering](https://sre.google/sre-book/) - Betsy Beyer, Chris Jones, Jennifer Petoff & Niall Richard Murphy (Google)  
-  *O livro que definiu a disciplina SRE - leitura obrigatória.*
+  *Define a disciplina SRE.*
   
 - [The Phoenix Project](https://www.itrevolution.com/book/the-phoenix-project/) - Gene Kim, Kevin Behr & George Spafford  
   *Novel que introduz os conceitos de DevOps de forma acessível.*
   
 - [Accelerate](https://spear.princeton.edu/accelerate/) - Nicole Forsgren, Jez Humble & Gene Kim  
-  *Pesquisa empírica sobre o que torna equipes de tecnologia de alto desempenho.*
+  *O que torna equipes de tecnologia de alto desempenho.*
   
 - [Team Topologies](https://teamtopologies.com/) - Matthew Skelton & Manuel Pais  
   *Estruturas organizacionais para fluxo de valor rápido em tecnologia.*
@@ -40,11 +40,11 @@ Este documento reúne recursos essenciais para quem deseja aprofundar seus conhe
 - [Designing Data-Intensive Applications](https://dataintensive.net/) - Martin Kleppmann  
   *Fundamental para entender trade-offs em sistemas de dados (relevante para escolher quando usar shell vs outras ferramentas).*
 
-## 🔧 **Ferramentas Essenciais**
+## Ferramentas Essenciais
 
 ### Para Shell Script
 - [ShellCheck](https://www.shellcheck.net/)  
-  *A ferramenta de linting mais importante para Bash - detecta erros, armadilhas e más práticas.*
+  *A principal ferramenta de linting para Bash - detecta erros, armadilhas e más práticas.*
   
 - [bashate](https://docs.openstack.org/bashate/latest/)  
   *Linter de estilo OpenStack para Bash.*
@@ -73,7 +73,7 @@ Este documento reúne recursos essenciais para quem deseja aprofundar seus conhe
 
 ### Observabilidade e Monitoring
 - [prometheus](https://prometheus.io/)  
-  *Sistema de monitoring e alerta - essencial entender para integrar healthchecks.*
+  *Sistema de monitoring e alerta. Útil para integrar healthchecks.*
   
 - [grafana](https://grafana.com/)  
   *Plataforma de visualização que trabalha bem com Prometheus.*
@@ -91,7 +91,7 @@ Este documento reúne recursos essenciais para quem deseja aprofundar seus conhe
 - [bats-support](https://github.com/bats-core/bats-support)  
   *Funções de apoio para Bats.*
 
-## 🌐 **Recursos Online e Comunidades**
+## Recursos Online e Comunidades
 
 ### Documentação Oficial
 - [Bash Reference Manual](https://www.gnu.org/software/bash/manual/)  
@@ -129,7 +129,7 @@ Este documento reúne recursos essenciais para quem deseja aprofundar seus conhe
 - [DevOps Subreddit](https://www.reddit.com/r/devops/)  
   *Comunidade ativa sobre práticas de DevOps e SRE.*
 
-## 📋 **Checklists e Referências Rápidas**
+## Checklists e Referências Rápidas
 
 ### Armadilhas Comuns do Shell (Baseado em Bash Pitfalls)
 - [Bash Pitfalls](https://mywiki.wooledge.org/BashPitfalls)  
@@ -152,7 +152,7 @@ Este documento reúne recursos essenciais para quem deseja aprofundar seus conhe
 - [BusyBox](https://busybox.net/)  
   *Implementação leve de ferramentas Unix útil para entender o mínimo necessário.*
 
-## 🎥 **Vídeos e Cursos**
+## Vídeos e Cursos
 
 ### Cursos Gratuitos
 - [Linux Foundation - Introduction to Linux](https://training.linuxfoundation.org/training/introduction-to-linux/)  
@@ -171,7 +171,7 @@ Este documento reúne recursos essenciais para quem deseja aprofundar seus conhe
 - [Computerphile](https://www.youtube.com/user/computerphile)  
   *Explicações aprofundadas de conceitos de ciência da computação (útil para entender fundamentos).*
 
-## 📰 **Blogs e Newsletters Especializados**
+## Blogs e Newsletters Especializados
 
 ### SRE e Infraestrutura
 - [Google SRE Blog](https://sre.google/sre-blog/)  
@@ -196,7 +196,7 @@ Este documento reúne recursos essenciais para quem deseja aprofundar seus conhe
 - [John Graham-Cumming's Blog](https://blog.jgc.org/)  
   *Posts sobre programação, história da computação e automação.*
 
-## ⚖️ **Quando Usar o que? Guias de Decisão**
+## Quando Usar o que? Guias de Decisão
 
 ### Fluxo de Decisão para Automação
 ```
@@ -230,11 +230,11 @@ Time crítico para entrega + equipe conhece shell? → Shell (com planejamento d
 | **Segurança intrínseca** | ★★☆☆☆ | ★★★★☆ | ★★★★★ | ★★★★★ |
 | **Manutenibilidade a longo prazo** | ★★☆☆☆ | ★★★★☆ | ★★★★★ | ★★★★★ |
 
-*Nota: Este é um guia geral - projetos específicos podem exceper a estas tendências.*
+*Nota: Este é um guia geral - projetos específicos podem exceder estas tendências.*
 
 ---
 
-## 📝 **Como Contribuir para Este Documento**
+## Como Contribuir para Este Documento
 
 Este recurso é mantido como parte do projeto curso-shell. Para contribuir:
 
@@ -252,7 +252,7 @@ Este recurso é mantido como parte do projeto curso-shell. Para contribuir:
 - Evitar links promocionais excessivos - foco em valor educacional/técnico
 - Atualizar links quebrados quando encontrados
 
-*Última atualização: $(date +%Y-%m-%d)*
+*Última atualização: 07/11/2026*
 
 ---
 *Este documento faz parte do projeto [curso-shell](https://github.com/AlexRabelo/ShellScript) e está licenciado sob MIT License.*

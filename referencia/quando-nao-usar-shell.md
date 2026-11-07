@@ -1,10 +1,8 @@
-# Quando Não Usar Shell Script: Julgamento Técnico para Profissionais de Infraestrutura
+# Quando não usar shell script
 
-## Introdução
+Shell script é uma ferramenta poderosa para automação de infraestrutura, mas tem limites. Este documento ajuda a escolher a ferramenta certa para cada tarefa — incluindo reconhecer quando **não** usar shell script.
 
-Shell script é uma ferramenta poderosa e indispensável para automação de infraestrutura, mas como qualquer instrumento, tem seus limites adequados. Este documento auxilia engenheiros de SRE, DevOps e Infraestrutura a desenvolver o julgamento técnico necessário para escolher a ferramenta certa para cada tarefa - incluindo reconhecer quando **não** usar shell script.
-
-Este conhecimento é o que distingue um técnico que apenas executa tarefas de um engenheiro que projeta soluções sustentáveis.
+Saber migrar para outra linguagem quando necessário é o que diferencia um técnico que apenas executa tarefas de alguém que projeta soluções sustentáveis.
 
 ---
 
@@ -203,12 +201,4 @@ Em um típico ambiente de SRE:
 
 ## Conclusão
 
-O verdadeiro profissional de infraestrutura não é aquele que conhece todas as ferramentas, mas aquele que **sabe escolher a ferramenta certa para cada problema**. Shell script permanece uma peça fundamental da automação de infraestrutura, mas seu valor é maximizado quando usado dentro de seu domínio de competência adequada.
-
-Desenvolver o julgamento técnico para reconhecer quando migrar para Python, Go, ou outras ferramentas é o que transforma um bom scripter em um excelente engenheiro de sistemas. Essa habilidade é particularmente valorizada em ambientes de SRE onde:
-- A complexidade dos sistemas continua crescendo
-- A necessidade de manutenibilidade a longo prazo é crítica
-- O custo de falhas em automação pode ser catastrophico
-- Equipes multidisciplinares precisam de escolhas de tecnologia transparentes e justificáveis
-
-Invista tempo nessa habilidade tanto quanto na proficiência técnica - ela renderá dividendos ao longo de toda sua carreira em infraestrutura e plataformas.
+Shell script continua sendo peça fundamental da automação de infraestrutura. Seu valor é maximizado quando usado dentro do domínio onde funciona bem. Desenvolver o julgamento técnico para saber quando migrar para Python, Go ou outra ferramenta é o que transforma um bom administrador de sistemas em um excelente engenheiro de sistemas.
