@@ -12,6 +12,7 @@ Um curso prático e progressivo pra quem quer aprender shell script escrevendo c
 |----------------|-----------|
 | **Aprender do zero** | Siga os módulos em ordem (00 → 15). Cada um pressupõe o anterior. |
 | **Consultar algo rápido** | Vá direto ao módulo do assunto ou use a pasta [`referencia/`](referencia/) (cheat sheets e armadilhas comuns). |
+| **Baixar material de consulta** | [Baixe o cheat-sheet completo](referencia/cheat-sheet.md) · [Cheat-sheets por módulo](referencia/) |
 | **Começar um script novo** | Copie [`templates/script-producao.sh`](templates/script-producao.sh) e adapte — já vem com header, strict mode, logging, dry-run e trap de sinais. |
 
 ---
@@ -98,6 +99,28 @@ Este repositório tem GitHub Actions que validam **todo push**:
 - **Validação de estrutura** — cada módulo tem README, exemplos, exercícios
 
 Veja o pipeline em [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+
+---
+
+## Certificação e Roadmap
+
+Este curso não emite certificado próprio. O seu certificado é o portfólio de scripts que você escreveu, testou e rodou aqui. O conteúdo, no entanto, cobre os tópicos de shell script exigidos pelas principais certificações de Linux do mercado:
+
+| Certificação | O que cobre de shell script | Link |
+|--------------|----------------------------|------|
+| **LFCS** — Linux Foundation Certified System Administrator | Comandos básicos, variáveis, redirecionamento, pipes, testes condicionais, loops simples, criação e execução de scripts | [linuxfoundation.org](https://www.linuxfoundation.org/certification/lfcs) |
+| **RHCSA** — Red Hat Certified System Administrator | Scripts de automação, `systemd` timers/services, SSH, agendamento com `cron`, gestão de usuários e permissões, resolução de problemas de boot | [redhat.com](https://www.redhat.com/en/services/training/rhcsa-red-hat-certified-system-administrator) |
+| **CompTIA Linux+** | Fundamentos de linha de comando, shell scripting básico, automação de tarefas, segurança e permissões | [comptia.org](https://www.comptia.org/certifications/linux) |
+
+### Roadmap sugerido
+
+| Módulos | O que aprende | Próxima certificação |
+|---------|---------------|----------------------|
+| 00 → 05 | Comandos básicos, variáveis, testes, laços, decisões | LFCS (parte de comandos e scripts simples) |
+| 06 → 10 | Funções, entrada de usuário, processamento de texto, scripts de produção com modo estrito e trap | RHCSA (parte de automação e script bash) |
+| 11 → 15 | Administração de servidores, systemd timers, observabilidade, AWS, projeto final SRE Toolkit | RHCSA completo e perfil SRE / Linux Admin |
+
+Não prometemos aprovação: prometemos que você terá escrito scripts reais que funcionam em produção — o que qualquer certificação exige na prática.
 
 ---
 
