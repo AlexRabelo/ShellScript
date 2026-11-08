@@ -149,7 +149,18 @@ Não prometemos aprovação: prometemos que você terá escrito scripts reais qu
 
 ---
 
-*Este curso é mantido como portfolio técnico e material de estudo. Sugestões, críticas e correções são bem-vindos!*
+*Este curso é mantido como portfolio técnico e material de estudo. Sugestões, críticas e correções são bem-vindas!*
+
+---
+
+## Padrão de Design Visual
+
+Este repositório adota o padrão de design visual do portfólio (Opção A — Ciano Elétrico):
+
+- [`docs/design-tokens.css`](docs/design-tokens.css) — tokens de cor, espaçamento, tipografia, bordas e componentes
+- Paleta: fundo `#08090c`, acento ciano `#22d3ee`, azul `#3b82f6`, borda `#1e293b`
+- Componentes: `.btn`, `.btn-primary`, `.btn-outline`, `.card`, `.badge`, `.badge-primary`, `.alert`, `.code`, `.section`, `.container`
+
 ---
 
 *Última atualização: 08/Nov/2026*  

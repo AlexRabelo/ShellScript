@@ -1,0 +1,174 @@
+#!/usr/bin/env bash
+#
+# sre-toolkit - Toolkit SRE completo para automação de infraestrutura
+# Subcomandos: saude, disco, backup, health, logs, aws, incidente
+#
+# Uso: sre-toolkit <subcomando> [opções]
+#       sre-toolkit --help
+#       sre-toolkit <subcomando> --help
+
+set -Eeuo pipefail
+
+readonly SCRIPT_NAME="${0##*/}"
+readonly TOOLKIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+readonly LIB_DIR="${TOOLKIT_ROOT}/lib"
+readonly COMANDOS_DIR="${TOOLKIT_ROOT}/comandos"
+readonly CONFIG_FILE="${CONFIG_FILE:-${TOOLKIT_ROOT}/config/sre-toolkit.conf}"
+readonly LOG_FILE="${LOG_FILE:-/tmp/sre-toolkit.log}"
+
+# Carrega configuração se existir
+[[ -f "$CONFIG_FILE" ]] && source "$CONFIG_FILE"
+
+# Carrega bibliotecas
+source "${LIB_DIR}/log.sh"
+source "${LIB_DIR}/valida.sh"
+source "${LIB_DIR}/alerta.sh"
+source "${LIB_DIR}/util.sh"
+
+# --- Subcomandos disponíveis ---
+declare -A SUBCOMANDOS=(
+    [saude]="${COMANDOS_DIR}/saude.sh"
+    [disco]="${COMANDOS_DIR}/disco.sh"
+    [backup]="${COMANDOS_DIR}/backup.sh"
+    [health]="${COMANDOS_DIR}/health.sh"
+    [logs]="${COMANDOS_DIR}/logs.sh"
+    [aws]="${COMANDOS_DIR}/aws.sh"
+    [incidente]="${COMANDOS_DIR}/incidente.sh"
+)
+
+# --- Help geral ---
+usage() {
+    cat <<EOF
+${SCRIPT_NAME} - Toolkit SRE para automação de infraestrutura
+
+Uso: ${SCRIPT_NAME} <subcomando> [opções]
+       ${SCRIPT_NAME} --help
+       ${SCRIPT_NAME} <subcomando> --help
+
+Subcomandos disponíveis:
+  saude       Relatório de saúde do servidor (CPU, RAM, disco, processos)
+  disco       Análise e limpeza de disco com retenção
+  backup      Backup rotativo com verificação de integridade
+  health      Healthcheck de serviços e endpoints HTTP/TCP
+  logs        Análise de logs (nginx, app, syslog) com métricas
+  aws         Inventário e análise de recursos AWS
+  incidente   Coleta de diagnóstico para troubleshooting
+
+Opções globais:
+  -c, --config ARQ    Arquivo de configuração (padrão: config/sre-toolkit.conf)
+  -v, --verbose       Modo verboso
+  -n, --dry-run       Simula execução sem alterar nada
+  -h, --help          Exibe esta ajuda
+
+Exemplos:
+  ${SCRIPT_NAME} saude -v
+  ${SCRIPT_NAME} disco --limpeza --dias 30
+  ${SCRIPT_NAME} backup -r 7 /dados /backup
+  ${SCRIPT_NAME} health -j https://api.exemplo.com/health
+  ${SCRIPT_NAME} aws -t ec2 -r us-east-1
+  ${SCRIPT_NAME} incidente --coleta-completa
+
+Configuração:
+  Edite ${CONFIG_FILE} para definir:
+  - ALERT_WEBHOOK_URL, ALERT_SLACK_URL, ALERT_TEAMS_URL
+  - BACKUP_RETENCAO_DIAS, HEALTHCHECK_TIMEOUT
+  - AWS_DEFAULT_REGION, AWS_PROFILE
+EOF
+}
+
+# --- Valida subcomando ---
+validar_subcomando() {
+    local cmd="$1"
+    [[ -n "${SUBCOMANDOS[$cmd]:-}" ]] || {
+        log_erro "Subcomando inválido: $cmd"
+        echo "Subcomandos válidos: ${!SUBCOMANDOS[*]}" >&2
+        return 1
+    }
+    [[ -x "${SUBCOMANDOS[$cmd]}" ]] || {
+        log_erro "Script do subcomando não encontrado ou não executável: ${SUBCOMANDOS[$cmd]}"
+        return 1
+    }
+}
+
+# --- Main ---
+main() {
+    local subcomando=""
+    local global_opts=()
+    local subcommand_args=()
+    local show_main_help=0
+
+    # Separa opções globais dos argumentos do subcomando
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -c|--config)
+                global_opts+=("$1" "$2")
+                shift 2
+                ;;
+            -v|--verbose)
+                global_opts+=("$1")
+                shift
+                ;;
+            -n|--dry-run)
+                global_opts+=("$1")
+                shift
+                ;;
+            -h|--help)
+                if [[ -z "$subcomando" ]]; then
+                    show_main_help=1
+                else
+                    subcommand_args+=("$1")
+                fi
+                shift
+                ;;
+            --)
+                shift
+                subcommand_args+=("$@")
+                break
+                ;;
+            -*)
+                log_erro "Opção global desconhecida: $1"
+                usage >&2
+                exit 2
+                ;;
+            *)
+                # Primeiro argumento não-opção é o subcomando
+                if [[ -z "$subcomando" ]]; then
+                    subcomando="$1"
+                else
+                    subcommand_args+=("$1")
+                fi
+                shift
+                ;;
+        esac
+    done
+
+    # Se -h/--help foi especificado e nenhum subcomando, mostra ajuda principal
+    if [[ $show_main_help -eq 1 && -z "$subcomando" ]]; then
+        usage
+        exit 0
+    fi
+
+    [[ -n "$subcomando" ]] || { usage >&2; log_erro "Subcomando obrigatório"; exit 2; }
+
+    validar_subcomando "$subcomando" || exit 2
+
+    # Exporta variáveis globais para subcomandos
+    export SCRIPT_NAME LOG_FILE TOOLKIT_ROOT LIB_DIR COMANDOS_DIR CONFIG_FILE
+    export JSON_OUTPUT=0 VERBOSE=0 DRY_RUN=0  # Valores padrão, podem ser sobrescritos pelos subcomandos
+
+    # Aplica opções globais
+    for ((i=0; i<${#global_opts[@]}; i+=2)); do
+        case "${global_opts[i]}" in
+            -c|--config) CONFIG_FILE="${global_opts[i+1]}" ;;
+            -v|--verbose) VERBOSE=1 ;;
+            -n|--dry-run) DRY_RUN=1 ;;
+        esac
+    done
+
+    log_info "sre-toolkit iniciado (subcomando: $subcomando, dry-run: $DRY_RUN)"
+
+    # Executa subcomando passando todos os argumentos restantes
+    exec "${SUBCOMANDOS[$subcomando]}" "${subcommand_args[@]}"
+}
+
+main "$@"

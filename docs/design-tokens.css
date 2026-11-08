@@ -1,0 +1,480 @@
+/* ==========================================================================
+   Design Tokens — Portfólio Alex Rabelo (Opção A: Ciano Elétrico)
+   Arquitetura de 3 camadas: Primitive → Semantic → Component
+   Repositório base: AlexRabelo/lab-redhat-wsl2
+   ========================================================================== */
+
+/* === PRIMITIVE TOKENS === */
+/* Valores brutos sem significado semântico */
+
+:root {
+  /* Cores — Paleta Ciano Elétrico (Dark Tech) */
+  --color-cyan-50:  #ccfeff;
+  --color-cyan-100: #99fdff;
+  --color-cyan-200: #66fbff;
+  --color-cyan-300: #33faff;
+  --color-cyan-400: #00f0e8;
+  --color-cyan-500: #22d3ee;
+  --color-cyan-600: #06b6d4;
+  --color-cyan-700: #0891b2;
+  --color-cyan-800: #0e7490;
+  --color-cyan-900: #155e75;
+
+  --color-blue-50:  #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+
+  /* Escala cinza escuro (fundo) */
+  --color-slate-50:   #f8fafc;
+  --color-slate-100:  #f1f5f9;
+  --color-slate-200:  #e2e8f0;
+  --color-slate-300:  #cbd5e1;
+  --color-slate-400:  #94a3b8;
+  --color-slate-500:  #64748b;
+  --color-slate-600:  #475569;
+  --color-slate-700:  #334155;
+  --color-slate-800:  #1e293b;
+  --color-slate-900:  #0f1115;
+  --color-slate-950:  #08090c;
+
+  /* Status */
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-yellow-500: #eab308;
+  --color-yellow-600: #ca8a04;
+  --color-red-500:   #ef4444;
+  --color-red-600:   #dc2626;
+
+  /* Espaçamento (base 4px) */
+  --space-0:    0;
+  --space-px:   1px;
+  --space-0-5:  0.125rem;  /* 2px */
+  --space-1:    0.25rem;   /* 4px */
+  --space-1-5:  0.375rem;  /* 6px */
+  --space-2:    0.5rem;    /* 8px */
+  --space-2-5:  0.625rem;  /* 10px */
+  --space-3:    0.75rem;   /* 12px */
+  --space-3-5:  0.875rem;  /* 14px */
+  --space-4:    1rem;      /* 16px */
+  --space-5:    1.25rem;   /* 20px */
+  --space-6:    1.5rem;    /* 24px */
+  --space-7:    1.75rem;   /* 28px */
+  --space-8:    2rem;      /* 32px */
+  --space-9:    2.25rem;   /* 36px */
+  --space-10:   2.5rem;    /* 40px */
+  --space-12:   3rem;      /* 48px */
+  --space-14:   3.5rem;    /* 56px */
+  --space-16:   4rem;      /* 64px */
+
+  /* Tipografia */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body:    'Source Sans 3', sans-serif;
+  --font-mono:    'ui-monospace', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --font-size-xs:   0.75rem;   /* 12px */
+  --font-size-sm:   0.875rem;  /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg:   1.125rem;  /* 18px */
+  --font-size-xl:   1.25rem;   /* 20px */
+  --font-size-2xl:  1.5rem;    /* 24px */
+  --font-size-3xl:  1.875rem;  /* 30px */
+  --font-size-4xl:  2.25rem;   /* 36px */
+
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  --leading-tight:  1.25;
+  --leading-snug:   1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  --tracking-tight:  -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.025em;
+
+  /* Raio de borda */
+  --radius-none:   0;
+  --radius-sm:     0.125rem;  /* 2px */
+  --radius-default: 0.25rem;  /* 4px */
+  --radius-md:     0.375rem;  /* 6px */
+  --radius-lg:     0.5rem;    /* 8px */
+  --radius-xl:     0.75rem;   /* 12px */
+  --radius-2xl:    1rem;      /* 16px */
+  --radius-full:   9999px;
+
+  /* Sombras */
+  --shadow-none:   none;
+  --shadow-sm:     0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-default: 0 1px 3px 0 rgb(0 0 0 / 0.1),
+                     0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md:     0 4px 6px -1px rgb(0 0 0 / 0.1),
+                   0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg:     0 10px 15px -3px rgb(0 0 0 / 0.1),
+                   0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl:     0 20px 25px -5px rgb(0 0 0 / 0.1),
+                   0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-card:   0 8px 24px -4px rgba(0, 0, 0, 0.45);
+  --shadow-glow:   0 0 40px rgba(34, 211, 238, 0.12);
+
+  /* Motion */
+  --duration-75:   75ms;
+  --duration-100:  100ms;
+  --duration-150:  150ms;
+  --duration-200:  200ms;
+  --duration-300:  300ms;
+  --duration-500:  500ms;
+
+  --duration-fast:   var(--duration-150);
+  --duration-normal: var(--duration-200);
+  --duration-slow:   var(--duration-300);
+
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* === SEMANTIC TOKENS === */
+/* Aliases de propósito */
+
+:root {
+  /* Background & Foreground */
+  --color-background: var(--color-slate-950);
+  --color-foreground: var(--color-slate-50);
+
+  /* Card / Surface */
+  --color-card: var(--color-slate-900);
+  --color-card-foreground: var(--color-slate-50);
+
+  /* Popover / Dropdown */
+  --color-popover: var(--color-slate-900);
+  --color-popover-foreground: var(--color-slate-50);
+
+  /* Primary (Ciano Elétrico) */
+  --color-primary: var(--color-cyan-500);
+  --color-primary-hover: var(--color-cyan-600);
+  --color-primary-active: var(--color-cyan-700);
+  --color-primary-foreground: var(--color-slate-950);
+
+  /* Secondary */
+  --color-secondary: var(--color-blue-500);
+  --color-secondary-hover: var(--color-blue-600);
+  --color-secondary-foreground: var(--color-slate-50);
+
+  /* Muted */
+  --color-muted: var(--color-slate-800);
+  --color-muted-foreground: var(--color-slate-400);
+
+  /* Accent */
+  --color-accent: var(--color-slate-800);
+  --color-accent-foreground: var(--color-cyan-500);
+
+  /* Destructive */
+  --color-destructive: var(--color-red-600);
+  --color-destructive-hover: var(--color-red-700);
+  --color-destructive-foreground: var(--color-slate-50);
+
+  /* Status */
+  --color-success: var(--color-green-600);
+  --color-success-foreground: var(--color-slate-50);
+  --color-warning: var(--color-yellow-500);
+  --color-warning-foreground: var(--color-slate-950);
+  --color-error: var(--color-red-600);
+  --color-error-foreground: var(--color-slate-50);
+  --color-info: var(--color-blue-500);
+  --color-info-foreground: var(--color-slate-50);
+
+  /* Border & Ring */
+  --color-border: var(--color-slate-700);
+  --color-input: var(--color-slate-800);
+  --color-ring: var(--color-cyan-500);
+
+  /* Spacing */
+  --spacing-component-xs: var(--space-1);
+  --spacing-component-sm: var(--space-2);
+  --spacing-component: var(--space-3);
+  --spacing-component-lg: var(--space-4);
+
+  --spacing-section-sm: var(--space-8);
+  --spacing-section: var(--space-12);
+  --spacing-section-lg: var(--space-16);
+
+  --spacing-page-x: var(--space-4);
+  --spacing-page-y: var(--space-6);
+
+  /* Typography */
+  --font-heading: var(--font-size-2xl);
+  --font-heading-lg: var(--font-size-3xl);
+  --font-heading-xl: var(--font-size-4xl);
+
+  --font-body: var(--font-size-base);
+  --font-body-sm: var(--font-size-sm);
+  --font-body-lg: var(--font-size-lg);
+
+  --font-label: var(--font-size-sm);
+  --font-caption: var(--font-size-xs);
+
+  /* Estados interativos */
+  --ring-width: 2px;
+  --ring-offset: 2px;
+  --ring-color: var(--color-ring);
+  --opacity-disabled: 0.5;
+
+  --transition-colors: color, background-color, border-color;
+  --transition-transform: transform;
+  --transition-all: all;
+}
+
+/* Dark mode (já é dark por padrão, mantém overrides para consistência) */
+.dark {
+  --color-background: var(--color-slate-950);
+  --color-foreground: var(--color-slate-50);
+  --color-card: var(--color-slate-900);
+  --color-card-foreground: var(--color-slate-50);
+  --color-popover: var(--color-slate-900);
+  --color-popover-foreground: var(--color-slate-50);
+  --color-muted: var(--color-slate-800);
+  --color-muted-foreground: var(--color-slate-400);
+  --color-secondary: var(--color-slate-800);
+  --color-secondary-foreground: var(--color-slate-50);
+  --color-accent: var(--color-slate-800);
+  --color-accent-foreground: var(--color-cyan-500);
+  --color-border: var(--color-slate-700);
+  --color-input: var(--color-slate-800);
+}
+
+/* === COMPONENT TOKENS === */
+/* Por componente */
+
+:root {
+  /* Button */
+  --button-bg: var(--color-primary);
+  --button-fg: var(--color-primary-foreground);
+  --button-hover-bg: var(--color-primary-hover);
+  --button-active-bg: var(--color-primary-active);
+
+  --button-secondary-bg: var(--color-secondary);
+  --button-secondary-fg: var(--color-secondary-foreground);
+  --button-secondary-hover-bg: var(--color-secondary-hover);
+
+  --button-outline-border: var(--color-border);
+  --button-outline-fg: var(--color-foreground);
+  --button-outline-hover-bg: var(--color-muted);
+
+  --button-ghost-fg: var(--color-foreground);
+  --button-ghost-hover-bg: var(--color-muted);
+
+  --button-destructive-bg: var(--color-destructive);
+  --button-destructive-fg: var(--color-destructive-foreground);
+  --button-destructive-hover-bg: var(--color-destructive-hover);
+
+  --button-padding-x: var(--space-4);
+  --button-padding-y: var(--space-2);
+  --button-padding-x-sm: var(--space-3);
+  --button-padding-y-sm: var(--space-1-5);
+  --button-padding-x-lg: var(--space-6);
+  --button-padding-y-lg: var(--space-3);
+
+  --button-radius: var(--radius-md);
+  --button-font-size: var(--font-size-sm);
+  --button-font-weight: var(--font-weight-medium);
+
+  /* Input */
+  --input-bg: var(--color-background);
+  --input-border: var(--color-input);
+  --input-fg: var(--color-foreground);
+  --input-placeholder: var(--color-muted-foreground);
+  --input-focus-border: var(--color-ring);
+  --input-focus-ring: var(--color-ring);
+  --input-error-border: var(--color-error);
+  --input-error-fg: var(--color-error);
+  --input-disabled-bg: var(--color-muted);
+  --input-disabled-fg: var(--color-muted-foreground);
+  --input-padding-x: var(--space-3);
+  --input-padding-y: var(--space-2);
+  --input-radius: var(--radius-md);
+  --input-font-size: var(--font-size-sm);
+
+  /* Card */
+  --card-bg: var(--color-card);
+  --card-fg: var(--color-card-foreground);
+  --card-border: var(--color-border);
+  --card-shadow: var(--shadow-card);
+  --card-shadow-hover: var(--shadow-lg);
+  --card-padding: var(--space-6);
+  --card-padding-sm: var(--space-4);
+  --card-gap: var(--space-4);
+  --card-radius: var(--radius-lg);
+
+  /* Badge */
+  --badge-bg: var(--color-primary);
+  --badge-fg: var(--color-primary-foreground);
+  --badge-secondary-bg: var(--color-secondary);
+  --badge-secondary-fg: var(--color-secondary-foreground);
+  --badge-outline-border: var(--color-border);
+  --badge-outline-fg: var(--color-foreground);
+  --badge-destructive-bg: var(--color-destructive);
+  --badge-destructive-fg: var(--color-destructive-foreground);
+  --badge-padding-x: var(--space-2-5);
+  --badge-padding-y: var(--space-0-5);
+  --badge-radius: var(--radius-full);
+  --badge-font-size: var(--font-size-xs);
+
+  /* Alert */
+  --alert-bg: var(--color-background);
+  --alert-fg: var(--color-foreground);
+  --alert-border: var(--color-border);
+  --alert-destructive-bg: var(--color-destructive);
+  --alert-destructive-fg: var(--color-destructive-foreground);
+  --alert-padding: var(--space-4);
+  --alert-radius: var(--radius-lg);
+
+  /* Table */
+  --table-header-bg: var(--color-muted);
+  --table-header-fg: var(--color-muted-foreground);
+  --table-row-bg: var(--color-background);
+  --table-row-hover-bg: var(--color-muted);
+  --table-row-fg: var(--color-foreground);
+  --table-border: var(--color-border);
+  --table-cell-padding-x: var(--space-4);
+  --table-cell-padding-y: var(--space-3);
+
+  /* Code */
+  --code-bg: var(--color-slate-900);
+  --code-fg: var(--color-slate-50);
+  --code-border: var(--color-border);
+  --code-radius: var(--radius-md);
+  --code-padding: var(--space-2) var(--space-3);
+  --code-font-size: var(--font-size-sm);
+}
+
+/* Utilitários de classe para uso direto em HTML */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border-radius: var(--button-radius);
+  font-family: var(--font-body);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--duration-fast) var(--ease),
+              box-shadow var(--duration-fast) var(--ease),
+              transform var(--duration-fast) var(--ease);
+}
+
+.btn-primary {
+  background: var(--button-bg);
+  color: var(--button-fg);
+  box-shadow: 0 10px 24px -8px var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  background: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--button-outline-border);
+  color: var(--button-outline-fg);
+}
+
+.btn-outline:hover {
+  background: var(--button-outline-hover-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-secondary {
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-fg);
+}
+
+.card {
+  background: var(--card-bg);
+  color: var(--card-fg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--duration-normal) var(--ease),
+              border-color var(--duration-normal) var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--badge-padding-y) var(--badge-padding-x);
+  border-radius: var(--badge-radius);
+  font-family: var(--font-body);
+  font-size: var(--badge-font-size);
+  font-weight: var(--font-weight-semibold);
+}
+
+.badge-primary {
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+}
+
+.badge-secondary {
+  background: var(--badge-secondary-bg);
+  color: var(--badge-secondary-fg);
+}
+
+.badge-outline {
+  background: transparent;
+  border: 1px solid var(--badge-outline-border);
+  color: var(--badge-outline-fg);
+}
+
+.alert {
+  background: var(--alert-bg);
+  border: 1px solid var(--alert-border);
+  border-radius: var(--alert-radius);
+  padding: var(--alert-padding);
+}
+
+.alert-destructive {
+  background: var(--alert-destructive-bg);
+  color: var(--alert-destructive-fg);
+  border-color: var(--color-error);
+}
+
+.code {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--code-radius);
+  padding: var(--code-padding);
+  font-family: var(--font-mono);
+  font-size: var(--code-font-size);
+}
+
+.section {
+  padding: var(--spacing-section) var(--spacing-page-x);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Fim dos Design Tokens
+   ========================================================================== */

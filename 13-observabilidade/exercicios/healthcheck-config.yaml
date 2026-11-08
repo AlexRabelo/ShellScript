@@ -1,0 +1,10 @@
+# healthcheck-config.yaml - Exemplo de configuração para healthcheck-composto.sh
+app:
+  nome: "minha-api"
+  health_endpoint: "https://httpbin.org/status/200"
+  ready_endpoint: "https://httpbin.org/status/200"
+  db_host: "localhost"
+  db_port: 5432
+  cache_host: "localhost"
+  cache_port: 6379
+  systemd_service: "docker"

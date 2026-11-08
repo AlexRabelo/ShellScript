@@ -1,0 +1,17 @@
+[Unit]
+Description=Timer para backup diário migrado (02:30)
+Documentation=man:backup-diario-migracao.service(1)
+Requires=backup-diario-migracao.service
+
+[Timer]
+# Diário às 02:30
+OnCalendar=daily 02:30
+# Persistência: se desligado às 02:30, roda no boot seguinte
+Persistent=true
+# Jitter 15min para evitar picos em storage compartilhado
+RandomizedDelaySec=15min
+AccuracySec=1min
+Description=Backup diário migrado do cron
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Timer para healthcheck migrado (a cada 10 min)
+Documentation=man:healthcheck-migracao.service(1)
+Requires=healthcheck-migracao.service
+
+[Timer]
+# A cada 10 minutos
+OnCalendar=*:0/10
+Persistent=true
+RandomizedDelaySec=2min
+AccuracySec=1min
+Description=Healthcheck migrado do cron
+
+[Install]
+WantedBy=timers.target

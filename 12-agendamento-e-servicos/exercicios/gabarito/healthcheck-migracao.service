@@ -1,0 +1,34 @@
+[Unit]
+Description=Healthcheck migrado do cron (a cada 10 min)
+Documentation=man:healthcheck.sh(1)
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=/usr/local/bin/healthcheck.sh
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/healthcheck.sh
+User=nagios
+Group=nagios
+# Segurança
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+# Logs
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=healthcheck-migracao
+TimeoutStartSec=60
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

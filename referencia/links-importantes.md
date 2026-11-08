@@ -252,7 +252,7 @@ Este recurso é mantido como parte do projeto curso-shell. Para contribuir:
 - Evitar links promocionais excessivos - foco em valor educacional/técnico
 - Atualizar links quebrados quando encontrados
 
-*Última atualização: 07/11/2026*
+*Última atualização: 07/Nov/2026*
 
 ---
 *Este documento faz parte do projeto [curso-shell](https://github.com/AlexRabelo/ShellScript) e está licenciado sob MIT License.*
