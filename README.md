@@ -154,4 +154,4 @@ Não prometemos aprovação: prometemos que você terá escrito scripts reais qu
 
 *Última atualização: 08/Nov/2026*  
 *Autor: Alex Luiz Rabelo — Cloud, DevOps & SRE*  
-*Transparência de IA: Este arquivo foi compilado com auxílio de ferramentas de IA com base em fontes oficiais da Red Hat e Microsoft, e revisado/testado manualmente pelo autor.*
+*Transparência de IA: Este arquivo foi compilado com auxílio de ferramentas de IA e revisado/testado manualmente pelo autor.*
