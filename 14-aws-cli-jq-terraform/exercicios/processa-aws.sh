@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
-# processa-aws.sh - Script COM AVISOS ShellCheck para corrigir
+# =============================================================================
+# processa-aws.sh — Script COM AVISOS ShellCheck para corrigir (exercício)
+# =============================================================================
+# Autor: Alex Rabelo
+# Versão: 1.0.0
+# Descrição: Exercício proposital com avisos de quoting/ShellCheck para correção.
+# Uso: ./processa-aws.sh
+# Códigos de saída: 0 sucesso | 1 erro de execução
+# =============================================================================
+
+set -Eeuo pipefail
 
 instances=$(aws ec2 describe-instances --output json)
 ids=$(echo $instances | jq -r '.Reservations[].Instances[].InstanceId')

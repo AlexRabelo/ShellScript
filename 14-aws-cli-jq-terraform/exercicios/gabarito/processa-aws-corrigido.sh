@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
-#
-# processa-aws-corrigido.sh - Versão corrigida sem avisos ShellCheck
-# Processa instâncias EC2 e tags AWS de forma segura.
+# =============================================================================
+# processa-aws-corrigido.sh — Versão corrigida sem avisos ShellCheck
+# =============================================================================
+# Autor: Alex Rabelo
+# Versão: 1.0.0
+# Descrição: Processa instâncias EC2 e tags AWS de forma segura.
+# Uso: ./processa-aws-corrigido.sh
+# Códigos de saída: 0 sucesso | 1 erro de execução | 3 dependência ausente
+# =============================================================================
 
 set -Eeuo pipefail
 

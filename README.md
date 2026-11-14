@@ -98,7 +98,7 @@ Este repositório tem GitHub Actions que validam **todo push**:
 - **Bats tests** nos módulos que têm `test/`
 - **Validação de estrutura** — cada módulo tem README, exemplos, exercícios
 
-Veja o pipeline em [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+Veja o pipeline em [`.github/workflows/ci.yaml`](.github/workflows/ci.yaml).
 
 ---
 

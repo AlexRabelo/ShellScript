@@ -101,9 +101,9 @@ check_file() {
     fi
 
     if [[ $has_errors -eq 1 ]]; then
-        ((ERROS++))
+        ERROS=$((ERROS + 1))
     fi
-    ((AVISOS+=has_warnings))
+    AVISOS=$((AVISOS + has_warnings))
 }
 
 echo "🔍 Verificando boas práticas de shell script..."
