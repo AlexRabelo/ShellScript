@@ -161,14 +161,4 @@ Não prometemos aprovação: prometemos que você terá escrito scripts reais qu
 
 ---
 
-## Padrão de Design Visual
-
-Este repositório adota o padrão de design visual do portfólio (Opção A — Ciano Elétrico):
-
-- [`docs/design-tokens.css`](docs/design-tokens.css) — tokens de cor, espaçamento, tipografia, bordas e componentes
-- Paleta: fundo `#08090c`, acento ciano `#22d3ee`, azul `#3b82f6`, borda `#1e293b`
-- Componentes: `.btn`, `.btn-primary`, `.btn-outline`, `.card`, `.badge`, `.badge-primary`, `.alert`, `.code`, `.section`, `.container`
-
----
-
 *Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*
