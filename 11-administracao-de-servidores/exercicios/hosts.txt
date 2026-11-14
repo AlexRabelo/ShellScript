@@ -1,3 +1,0 @@
-# Hosts para inventário (um por linha, # = comentário)
-localhost
-127.0.0.1

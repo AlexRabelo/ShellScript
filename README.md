@@ -40,31 +40,31 @@ Um curso prático e progressivo pra quem quer aprender shell script escrevendo c
 | [00](00-linux-essencial/) | Linux essencial | Navegar, manipular arquivos, entender permissões, usar pipes e redirecionamentos |
 | [01](01-primeiro-script/) | Primeiro script | Criar, tornar executável e rodar um script |
 | [02](02-variaveis-e-parametros/) | Variáveis e parâmetros | Guardar dados, receber argumentos, ler entrada do usuário |
-| [03](03-testes-e-operadores/) | Testes e operadores | Comparar strings, números e arquivos com `[ ]` e `[[ ]]` |
+| 03 *(em breve)* | Testes e operadores | Comparar strings, números e arquivos com `[ ]` e `[[ ]]` |
 
-### Parte 2: Controle de Fluxo (Módulos 04–07)
+### Parte 2: Controle de Fluxo (Módulos 04–07 — *em breve*)
 | Módulo | Tema | Ao final você vai conseguir... |
 |--------|------|--------------------------------|
-| [04](04-decisao/) | Decisão | Usar `if`, `elif`, `else` e `case` com confiança |
-| [05](05-lacos/) | Laços | Repetir tarefas com `for`, `while`, `until`, controlar com `break`/`continue` |
-| [06](06-funcoes/) | Funções | Organizar e reutilizar código, escopo de variáveis, retorno, recursão |
-| [07](07-menus-e-entrada/) | Menus e entrada | Criar menus interativos (`select`), ler input (`read`), parsear flags (`getopts`) |
+| 04 | Decisão | Usar `if`, `elif`, `else` e `case` com confiança |
+| 05 | Laços | Repetir tarefas com `for`, `while`, `until`, controlar com `break`/`continue` |
+| 06 | Funções | Organizar e reutilizar código, escopo de variáveis, retorno, recursão |
+| 07 | Menus e entrada | Criar menus interativos (`select`), ler input (`read`), parsear flags (`getopts`) |
 
-### Parte 3: Texto e Robustez (Módulos 08–10)
+### Parte 3: Texto e Robustez (Módulos 08–10 — *em breve*)
 | Módulo | Tema | Ao final você vai conseguir... |
 |--------|------|--------------------------------|
-| [08](08-processamento-de-texto/) | Processamento de texto | Filtrar e transformar logs/saídas com `grep`, `sed`, `awk`, pipelines complexos |
-| [09](09-arrays-e-expansoes/) | Arrays e expansões | Trabalhar com listas, mapas (arrays associativos), manipulação nativa de strings |
-| [10](10-scripts-de-producao/) | Scripts de produção | Escrever scripts seguros, idempotentes, depuráveis — lockfiles, config files, validação rigorosa |
+| 08 | Processamento de texto | Filtrar e transformar logs/saídas com `grep`, `sed`, `awk`, pipelines complexos |
+| 09 | Arrays e expansões | Trabalhar com listas, mapas (arrays associativos), manipulação nativa de strings |
+| 10 | Scripts de produção | Escrever scripts seguros, idempotentes, depuráveis — lockfiles, config files, validação rigorosa |
 
-### Parte 4: Infraestrutura e SRE (Módulos 11–15)
+### Parte 4: Infraestrutura e SRE (Módulos 11–15 — *em breve*)
 | Módulo | Tema | Ao final você vai conseguir... |
 |--------|------|--------------------------------|
-| [11](11-administracao-de-servidores/) | Admin de servidores | Automatizar disco, usuários, processos, backup rotativo, systemd |
-| [12](12-agendamento-e-servicos/) | Agendamento e serviços | Usar `cron` e systemd timers, criar unidades, logging estruturado |
-| [13](13-observabilidade/) | Observabilidade | Criar healthchecks, analisar logs, enviar alertas, coletar métricas |
-| [14](14-aws-cli-jq-terraform/) | AWS CLI, jq, Terraform | Automatizar nuvem com shell: inventário, drift detection, cost explorer |
-| [15](15-projeto-final/) | Projeto final | Construir um **SRE Toolkit** completo com CLI unificado |
+| 11 | Admin de servidores | Automatizar disco, usuários, processos, backup rotativo, systemd |
+| 12 | Agendamento e serviços | Usar `cron` e systemd timers, criar unidades, logging estruturado |
+| 13 | Observabilidade | Criar healthchecks, analisar logs, enviar alertas, coletar métricas |
+| 14 | AWS CLI, jq, Terraform | Automatizar nuvem com shell: inventário, drift detection, cost explorer |
+| 15 | Projeto final | Construir um **SRE Toolkit** completo com CLI unificado |
 
 ---
 
