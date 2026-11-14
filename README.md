@@ -1,5 +1,10 @@
 # Curso de Shell Script (Bash) — Do Zero à Automação Real
 
+[![Bash](https://img.shields.io/badge/Bash-4%2B-4EAA25?logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
+[![ShellCheck](https://img.shields.io/badge/ShellCheck-Clean-22D3EE)](https://www.shellcheck.net/)
+[![Bats](https://img.shields.io/badge/Tests-Bats-3B82F6)](https://github.com/bats-core/bats-core)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Um curso prático e progressivo pra quem quer aprender shell script escrevendo código que aguenta produção. Começa no básico (navegar, arquivos, permissões) e vai até automação de servidores, observabilidade e AWS.
 
 > **A analogia:** é como aprender a cozinhar. Primeiro você domina a faca e o fogão (comandos), depois segue receitas (scripts), e no final monta uma cozinha industrial que funciona sozinha às 3h da manhã (automação em produção).
@@ -145,7 +150,10 @@ Não prometemos aprovação: prometemos que você terá escrito scripts reais qu
 
 ## Autor
 
-**Alex Rabelo** — [GitHub](https://github.com/AlexRabelo) • [LinkedIn](https://linkedin.com/in/alexrabelo)
+**Alex Luiz Rabelo** — Especialista em Infraestrutura de TI, Middleware, DevOps & SRE
+* GitHub: [github.com/AlexRabelo](https://github.com/AlexRabelo)
+* Portfólio: [alexrabelo.github.io](https://alexrabelo.github.io/)
+* LinkedIn: [linkedin.com/in/alexrabelo](https://www.linkedin.com/in/alexrabelo/)
 
 ---
 
@@ -163,6 +171,4 @@ Este repositório adota o padrão de design visual do portfólio (Opção A — 
 
 ---
 
-*Última atualização: 08/Nov/2026*  
-*Autor: Alex Luiz Rabelo — Cloud, DevOps & SRE*  
-*Transparência de IA: Este arquivo foi compilado com auxílio de ferramentas de IA e revisado/testado manualmente pelo autor.*
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*
