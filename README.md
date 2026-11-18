@@ -54,7 +54,7 @@ Um curso prático e progressivo pra quem quer aprender shell script escrevendo c
 | Módulo | Status | Tema | Ao final você vai conseguir... |
 |--------|--------|------|--------------------------------|
 | 08 | 📋 Planejado | Processamento de texto | Filtrar e transformar logs/saídas com `grep`, `sed`, `awk`, pipelines complexos |
-| [09](09-arrays-e-expansoes/) | ✅ Publicado | Arrays e expansões | Trabalhar com listas, mapas (arrays associativos), manipulação nativa de strings |
+| 09 | 🚧 Em andamento | Arrays e expansões | Trabalhar com listas, mapas (arrays associativos), manipulação nativa de strings |
 | 10 | 📋 Planejado | Scripts de produção | Escrever scripts seguros, idempotentes, depuráveis — lockfiles, config files, validação rigorosa |
 
 ### Parte 4: Infraestrutura e SRE (Módulos 11–15 — não publicados)
