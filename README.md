@@ -40,31 +40,31 @@ Um curso prático e progressivo pra quem quer aprender shell script escrevendo c
 | [00](00-linux-essencial/) | ✅ Publicado | Linux essencial | Navegar, manipular arquivos, entender permissões, usar pipes e redirecionamentos |
 | [01](01-primeiro-script/) | ✅ Publicado | Primeiro script | Criar, tornar executável e rodar um script |
 | [02](02-variaveis-e-parametros/) | ✅ Publicado | Variáveis e parâmetros | Guardar dados, receber argumentos, ler entrada do usuário |
-| 03 | 📋 Planejado | Testes e operadores | Comparar strings, números e arquivos com `[ ]` e `[[ ]]` |
+| 03 | 🚧 Em andamento | Testes e operadores | Comparar strings, números e arquivos com `[ ]` e `[[ ]]` |
 
-### Parte 2: Controle de Fluxo (Módulos 04–07 — não publicados)
+### Parte 2: Controle de Fluxo (Módulos 04–07 — Em andamento)
 | Módulo | Status | Tema | Ao final você vai conseguir... |
 |--------|--------|------|--------------------------------|
-| 04 | 📋 Planejado | Decisão | Usar `if`, `elif`, `else` e `case` com confiança |
-| 05 | 📋 Planejado | Laços | Repetir tarefas com `for`, `while`, `until`, controlar com `break`/`continue` |
-| 06 | 📋 Planejado | Funções | Organizar e reutilizar código, escopo de variáveis, retorno, recursão |
-| 07 | 📋 Planejado | Menus e entrada | Criar menus interativos (`select`), ler input (`read`), parsear flags (`getopts`) |
+| 04 | 🚧 Em andamento | Decisão | Usar `if`, `elif`, `else` e `case` com confiança |
+| 05 | 🚧 Em andamento | Laços | Repetir tarefas com `for`, `while`, `until`, controlar com `break`/`continue` |
+| 06 | 🚧 Em andamento | Funções | Organizar e reutilizar código, escopo de variáveis, retorno, recursão |
+| 07 | 🚧 Em andamento | Menus e entrada | Criar menus interativos (`select`), ler input (`read`), parsear flags (`getopts`) |
 
-### Parte 3: Texto e Robustez (Módulos 08–10 — publicado: 09)
+### Parte 3: Texto e Robustez (Módulos 08–10 — Em andamento)
 | Módulo | Status | Tema | Ao final você vai conseguir... |
 |--------|--------|------|--------------------------------|
-| 08 | 📋 Planejado | Processamento de texto | Filtrar e transformar logs/saídas com `grep`, `sed`, `awk`, pipelines complexos |
+| 08 | 🚧 Em andamento | Processamento de texto | Filtrar e transformar logs/saídas com `grep`, `sed`, `awk`, pipelines complexos |
 | 09 | 🚧 Em andamento | Arrays e expansões | Trabalhar com listas, mapas (arrays associativos), manipulação nativa de strings |
-| 10 | 📋 Planejado | Scripts de produção | Escrever scripts seguros, idempotentes, depuráveis — lockfiles, config files, validação rigorosa |
+| 10 | 🚧 Em andamento | Scripts de produção | Escrever scripts seguros, idempotentes, depuráveis — lockfiles, config files, validação rigorosa |
 
-### Parte 4: Infraestrutura e SRE (Módulos 11–15 — não publicados)
+### Parte 4: Infraestrutura e SRE (Módulos 11–15 — Em andamento)
 | Módulo | Status | Tema | Ao final você vai conseguir... |
 |--------|--------|------|--------------------------------|
-| 11 | 📋 Planejado | Admin de servidores | Automatizar disco, usuários, processos, backup rotativo, systemd |
-| 12 | 📋 Planejado | Agendamento e serviços | Usar `cron` e systemd timers, criar unidades, logging estruturado |
-| 13 | 📋 Planejado | Observabilidade | Criar healthchecks, analisar logs, enviar alertas, coletar métricas |
-| 14 | 📋 Planejado | AWS CLI, jq, Terraform | Automatizar nuvem com shell: inventário, drift detection, cost explorer |
-| 15 | 📋 Planejado | Projeto final | Construir um **SRE Toolkit** completo com CLI unificado |
+| 11 | 🚧 Em andamento | Admin de servidores | Automatizar disco, usuários, processos, backup rotativo, systemd |
+| 12 | 🚧 Em andamento | Agendamento e serviços | Usar `cron` e systemd timers, criar unidades, logging estruturado |
+| 13 | 🚧 Em andamento | Observabilidade | Criar healthchecks, analisar logs, enviar alertas, coletar métricas |
+| 14 | 🚧 Em andamento | AWS CLI, jq, Terraform | Automatizar nuvem com shell: inventário, drift detection, cost explorer |
+| 15 | 🚧 Em andamento | Projeto final | Construir um **SRE Toolkit** completo com CLI unificado |
 
 ---
 
@@ -86,8 +86,8 @@ Este repositório contém o **curso de Shell Script (Bash)**. Os arquivos em `do
 
 | Material | Onde fica | É parte do curso? |
 |----------|-----------|-------------------|
-| Módulos 00, 01, 02, 09 | Pastas `NN-*/` | ✅ Sim |
-| Módulos 03–08, 10–15 | Não publicados | 📋 Planejados |
+| Módulos 00, 01, 02 | Pastas `NN-*/` | ✅ Sim |
+| Módulos 03–15 | Em andamento | 🚧 Em andamento |
 | Design tokens (CSS) | `docs/` | ❌ Não (portfólio pessoal) |
 | Cheat sheets e armadilhas | `referencia/` | ✅ Sim |
 
