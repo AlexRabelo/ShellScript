@@ -34,37 +34,37 @@ Um curso prático e progressivo pra quem quer aprender shell script escrevendo c
 
 ## Trilha de Aprendizado — O Que Você Vai Sair Sabendo Fazer
 
-### Parte 1: Fundamentos (Módulos 00–03)
-| Módulo | Tema | Ao final você vai conseguir... |
-|--------|------|--------------------------------|
-| [00](00-linux-essencial/) | Linux essencial | Navegar, manipular arquivos, entender permissões, usar pipes e redirecionamentos |
-| [01](01-primeiro-script/) | Primeiro script | Criar, tornar executável e rodar um script |
-| [02](02-variaveis-e-parametros/) | Variáveis e parâmetros | Guardar dados, receber argumentos, ler entrada do usuário |
-| 03 *(em breve)* | Testes e operadores | Comparar strings, números e arquivos com `[ ]` e `[[ ]]` |
+### Parte 1: Fundamentos (Módulos 00–03 — publicados: 00, 01, 02)
+| Módulo | Status | Tema | Ao final você vai conseguir... |
+|--------|--------|------|--------------------------------|
+| [00](00-linux-essencial/) | ✅ Publicado | Linux essencial | Navegar, manipular arquivos, entender permissões, usar pipes e redirecionamentos |
+| [01](01-primeiro-script/) | ✅ Publicado | Primeiro script | Criar, tornar executável e rodar um script |
+| [02](02-variaveis-e-parametros/) | ✅ Publicado | Variáveis e parâmetros | Guardar dados, receber argumentos, ler entrada do usuário |
+| 03 | 📋 Planejado | Testes e operadores | Comparar strings, números e arquivos com `[ ]` e `[[ ]]` |
 
-### Parte 2: Controle de Fluxo (Módulos 04–07 — *em breve*)
-| Módulo | Tema | Ao final você vai conseguir... |
-|--------|------|--------------------------------|
-| 04 | Decisão | Usar `if`, `elif`, `else` e `case` com confiança |
-| 05 | Laços | Repetir tarefas com `for`, `while`, `until`, controlar com `break`/`continue` |
-| 06 | Funções | Organizar e reutilizar código, escopo de variáveis, retorno, recursão |
-| 07 | Menus e entrada | Criar menus interativos (`select`), ler input (`read`), parsear flags (`getopts`) |
+### Parte 2: Controle de Fluxo (Módulos 04–07 — não publicados)
+| Módulo | Status | Tema | Ao final você vai conseguir... |
+|--------|--------|------|--------------------------------|
+| 04 | 📋 Planejado | Decisão | Usar `if`, `elif`, `else` e `case` com confiança |
+| 05 | 📋 Planejado | Laços | Repetir tarefas com `for`, `while`, `until`, controlar com `break`/`continue` |
+| 06 | 📋 Planejado | Funções | Organizar e reutilizar código, escopo de variáveis, retorno, recursão |
+| 07 | 📋 Planejado | Menus e entrada | Criar menus interativos (`select`), ler input (`read`), parsear flags (`getopts`) |
 
-### Parte 3: Texto e Robustez (Módulos 08–10 — *em breve*)
-| Módulo | Tema | Ao final você vai conseguir... |
-|--------|------|--------------------------------|
-| 08 | Processamento de texto | Filtrar e transformar logs/saídas com `grep`, `sed`, `awk`, pipelines complexos |
-| 09 | Arrays e expansões | Trabalhar com listas, mapas (arrays associativos), manipulação nativa de strings |
-| 10 | Scripts de produção | Escrever scripts seguros, idempotentes, depuráveis — lockfiles, config files, validação rigorosa |
+### Parte 3: Texto e Robustez (Módulos 08–10 — publicado: 09)
+| Módulo | Status | Tema | Ao final você vai conseguir... |
+|--------|--------|------|--------------------------------|
+| 08 | 📋 Planejado | Processamento de texto | Filtrar e transformar logs/saídas com `grep`, `sed`, `awk`, pipelines complexos |
+| [09](09-arrays-e-expansoes/) | ✅ Publicado | Arrays e expansões | Trabalhar com listas, mapas (arrays associativos), manipulação nativa de strings |
+| 10 | 📋 Planejado | Scripts de produção | Escrever scripts seguros, idempotentes, depuráveis — lockfiles, config files, validação rigorosa |
 
-### Parte 4: Infraestrutura e SRE (Módulos 11–15 — *em breve*)
-| Módulo | Tema | Ao final você vai conseguir... |
-|--------|------|--------------------------------|
-| 11 | Admin de servidores | Automatizar disco, usuários, processos, backup rotativo, systemd |
-| 12 | Agendamento e serviços | Usar `cron` e systemd timers, criar unidades, logging estruturado |
-| 13 | Observabilidade | Criar healthchecks, analisar logs, enviar alertas, coletar métricas |
-| 14 | AWS CLI, jq, Terraform | Automatizar nuvem com shell: inventário, drift detection, cost explorer |
-| 15 | Projeto final | Construir um **SRE Toolkit** completo com CLI unificado |
+### Parte 4: Infraestrutura e SRE (Módulos 11–15 — não publicados)
+| Módulo | Status | Tema | Ao final você vai conseguir... |
+|--------|--------|------|--------------------------------|
+| 11 | 📋 Planejado | Admin de servidores | Automatizar disco, usuários, processos, backup rotativo, systemd |
+| 12 | 📋 Planejado | Agendamento e serviços | Usar `cron` e systemd timers, criar unidades, logging estruturado |
+| 13 | 📋 Planejado | Observabilidade | Criar healthchecks, analisar logs, enviar alertas, coletar métricas |
+| 14 | 📋 Planejado | AWS CLI, jq, Terraform | Automatizar nuvem com shell: inventário, drift detection, cost explorer |
+| 15 | 📋 Planejado | Projeto final | Construir um **SRE Toolkit** completo com CLI unificado |
 
 ---
 
@@ -77,6 +77,19 @@ NN-nome-do-modulo/
 ├── exercicios/    # enunciados (README.md) e gabarito/
 └── test/          # testes automatizados (bats) — opcional mas recomendado
 ```
+
+---
+
+## Escopo e Material de Referência
+
+Este repositório contém o **curso de Shell Script (Bash)**. Os arquivos em `docs/` (`design-tokens.css`, `design-telemetry.css`) são material de referência de design do portfólio pessoal do autor (identidade visual "Ciano Elétrico" e tema SRE/Observability). Eles **não** são interface do curso e não afetam a renderização do README no GitHub.
+
+| Material | Onde fica | É parte do curso? |
+|----------|-----------|-------------------|
+| Módulos 00, 01, 02, 09 | Pastas `NN-*/` | ✅ Sim |
+| Módulos 03–08, 10–15 | Não publicados | 📋 Planejados |
+| Design tokens (CSS) | `docs/` | ❌ Não (portfólio pessoal) |
+| Cheat sheets e armadilhas | `referencia/` | ✅ Sim |
 
 ---
 
@@ -161,4 +174,4 @@ Não prometemos aprovação: prometemos que você terá escrito scripts reais qu
 
 ---
 
-*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA (edição de AGENTS.md, revisão de design via ui-ux-pro-max e design, geração de sugestões de layout e linguagem) e testado manualmente pelo autor. Todo código de script (.sh) foi escrito e revisado por humanos.*
