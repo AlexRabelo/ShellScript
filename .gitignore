@@ -22,3 +22,9 @@ Thumbs.db
 
 # Configuração local do OpenCode (caminhos da máquina)
 .mcp.json
+
+# Configuração local de agente (OpenCode / Claude Code / GitNexus)
+# Não é conteúdo do curso — manter apenas no disco local
+.claude/
+CLAUDE.md
+AGENTS.md
