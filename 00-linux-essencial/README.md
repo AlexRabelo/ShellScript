@@ -239,3 +239,6 @@ journalctl -u ssh -n 20     # últimos logs de um serviço
 - Faça os exercícios: [`exercicios/`](exercicios/)
 
 Quando estiver confortável, siga para o [módulo 01](../01-primeiro-script/).
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

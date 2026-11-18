@@ -133,3 +133,6 @@ bash -x script.sh      # traça a execução
 set -x ; ... ; set +x  # traça um trecho
 shellcheck script.sh
 ```
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

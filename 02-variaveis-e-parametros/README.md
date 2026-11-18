@@ -189,3 +189,6 @@ Veja [`exercicios/README.md`](exercicios/README.md) para 6 exercícios progressi
 - [ ] Sei o que `$#`, `$?`, `$$`, `$!` retornam
 
 Se marcou todos, siga para o [Módulo 03](../03-testes-e-operadores/).
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

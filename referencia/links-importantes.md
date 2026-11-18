@@ -256,3 +256,6 @@ Este recurso é mantido como parte do projeto curso-shell. Para contribuir:
 
 ---
 *Este documento faz parte do projeto [curso-shell](https://github.com/AlexRabelo/ShellScript) e está licenciado sob MIT License.*
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

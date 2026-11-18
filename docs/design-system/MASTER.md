@@ -146,3 +146,6 @@ Os dois CSS existentes usam paletas ligeiramente diferentes. Proposta de unifica
 ---
 
 **Este é um documento de proposta.** Nada foi modificado nos arquivos existentes (`docs/design-tokens.css`, `docs/design-telemetry.css`, `README.md`). Diga se deseja que eu prossiga com alguma etapa.
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

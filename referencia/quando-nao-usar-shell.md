@@ -202,3 +202,6 @@ Em um típico ambiente de SRE:
 ## Conclusão
 
 Shell script continua sendo peça fundamental da automação de infraestrutura. Seu valor é maximizado quando usado dentro do domínio onde funciona bem. Desenvolver o julgamento técnico para saber quando migrar para Python, Go ou outra ferramenta é o que transforma um bom administrador de sistemas em um excelente engenheiro de sistemas.
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

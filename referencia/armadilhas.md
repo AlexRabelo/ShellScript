@@ -34,3 +34,6 @@
 3. Rode com `--dry-run`
 4. Teste em ambiente de laboratório
 5. Leia o script como se outra pessoa o tivesse escrito
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

@@ -251,3 +251,6 @@ Ao concluir este módulo, você terá dominado os absolutamente básicos de shel
 - [Referência sobre quando não usar shell](../referencia/quando-nao-usar-shell.md) - Diretrizes detalhadas para julgamento técnico na escolha de ferramentas de automação
 
 Próximo: [módulo 02, variáveis e parâmetros](../02-variaveis-e-parametros/).
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

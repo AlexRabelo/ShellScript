@@ -174,4 +174,4 @@ Não prometemos aprovação: prometemos que você terá escrito scripts reais qu
 
 ---
 
-*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA (edição de AGENTS.md, revisão de design via ui-ux-pro-max e design, geração de sugestões de layout e linguagem) e testado manualmente pelo autor. Todo código de script (.sh) foi escrito e revisado por humanos.*
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*

@@ -27,3 +27,6 @@ Material de consulta. Para a explicação completa de cada item, veja o módulo 
 | cron, systemd timers | [12](../12-agendamento-e-servicos/) |
 | Healthchecks, alertas | [13](../13-observabilidade/) |
 | `aws`, `jq`, Terraform | [14](../14-aws-cli-jq-terraform/) |
+
+---
+*Transparência de IA: Este projeto foi estruturado e revisado com auxílio de ferramentas de IA e testado manualmente pelo autor.*
